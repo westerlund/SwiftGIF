@@ -26,7 +26,7 @@ it, simply add the following line to your Podfile:
 ## Todo
 
 - [ ] Thread support
-- [ ] Better documentation
+- [ ] Better documentation
 
 ## Author
 
