@@ -10,19 +10,16 @@
 Pod::Spec.new do |s|
   s.name             = "SwiftGIF"
   s.version          = "0.1.0"
-  s.summary          = "A short description of SwiftGIF."
+  s.summary          = "SwiftGIF is a small tool for creating animated GIFs in Swift"
   s.description      = <<-DESC
-                       An optional longer description of SwiftGIF
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/SwiftGIF"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
+                        SwiftGIF is a small nifty tool for creating animated gifs in swift.
+                        Just install and call the only method there is.                     
+  DESC
+  s.homepage         = "https://github.com/westerlund/SwiftGIF"
+  s.license          = 'WTFPL'
   s.author           = { "Simon Westerlund" => "s@simonwesterlund.se" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/SwiftGIF.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.source           = { :git => "https://github.com/westerlund/SwiftGIF.git", :tag => s.version.to_s }
+  s.social_media_url = 'https://twitter.com/wesslansimon'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
@@ -32,7 +29,5 @@ Pod::Spec.new do |s|
     'SwiftGIF' => ['Pod/Assets/*.png']
   }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.frameworks = 'UIKit', 'ImageIO', 'MobileCoreServices'
 end

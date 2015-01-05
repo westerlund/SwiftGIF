@@ -1,15 +1,20 @@
 # SwiftGIF
 
-[![CI Status](http://img.shields.io/travis/Simon Westerlund/SwiftGIF.svg?style=flat)](https://travis-ci.org/Simon Westerlund/SwiftGIF)
 [![Version](https://img.shields.io/cocoapods/v/SwiftGIF.svg?style=flat)](http://cocoadocs.org/docsets/SwiftGIF)
 [![License](https://img.shields.io/cocoapods/l/SwiftGIF.svg?style=flat)](http://cocoadocs.org/docsets/SwiftGIF)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftGIF.svg?style=flat)](http://cocoadocs.org/docsets/SwiftGIF)
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+```Swift
+createGIF(with: [UIImage(named: "img1"), UIImage(named: "img2")], 0.15) { (data, error) -> () in
+    if error == nil {
+        // do something with the data          
+    }
+}
+```
 
-## Requirements
+A better example would be to fetch a couple of images from a source somewhere.
 
 ## Installation
 
@@ -18,11 +23,16 @@ it, simply add the following line to your Podfile:
 
     pod "SwiftGIF"
 
+## Todo
+
+- [ ] Thread support
+- [ ] Better documentation
+
 ## Author
 
 Simon Westerlund, s@simonwesterlund.se
 
 ## License
 
-SwiftGIF is available under the MIT license. See the LICENSE file for more info.
+SwiftGIF is available under the WTFPL license. See the LICENSE file for more info.
 
