@@ -23,11 +23,6 @@ it, simply add the following line to your Podfile:
 
     pod "SwiftGIF"
 
-## Todo
-
-- [ ] Thread support
-- [ ] Better documentation
-
 ## Author
 
 Simon Westerlund, s@simonwesterlund.se
