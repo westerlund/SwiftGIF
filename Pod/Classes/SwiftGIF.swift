@@ -25,7 +25,7 @@ private func createErrorFromString(string: String, code: Int = -1) -> NSError {
  :param: frameDelay an delay in seconds between each frame
  :param: callback set a block that will get called when done, it'll return with data and error, both which can be nil
 */
-func createGIF(with images: [UIImage], repeatCount: Int = 0, frameDelay: Double, callback: (data: NSData?, error: NSError?) -> ()) {
+public func createGIF(with images: [UIImage], repeatCount: Int = 0, frameDelay: Double, callback: (data: NSData?, error: NSError?) -> ()) {
     
     let fileProperties = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFLoopCount as String: repeatCount]]
     let frameProperties = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: frameDelay]]
