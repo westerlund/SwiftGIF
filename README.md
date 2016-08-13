@@ -25,7 +25,7 @@ it, simply add the following line to your Podfile:
 
 ## Author
 
-Simon Westerlund, s@simonwesterlund.se
+Simon Westerlund, s@simonwesterlund.se, [@wesslansimon](http://twitter.com/wesslansimon)
 
 ## License
 
