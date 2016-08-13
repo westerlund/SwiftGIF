@@ -30,23 +30,28 @@ public func createGIF(with images: [UIImage], repeatCount: Int = 0, frameDelay: 
     let fileProperties = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFLoopCount as String: repeatCount]]
     let frameProperties = [kCGImagePropertyGIFDictionary as String: [kCGImagePropertyGIFDelayTime as String: frameDelay]]
     
-    let documentsDirectory = NSTemporaryDirectory()
-    let url = NSURL(fileURLWithPath: documentsDirectory)?.URLByAppendingPathComponent("animated.gif")
+    let tempDirectory = NSTemporaryDirectory()
+    let url = NSURL(fileURLWithPath: tempDirectory).URLByAppendingPathComponent("animated.gif")
     
-    if let url = url {
-        let destination = CGImageDestinationCreateWithURL(url, kUTTypeGIF, UInt(images.count), nil)
-        CGImageDestinationSetProperties(destination, fileProperties)
-        
-        for i in 0..<images.count {
-            CGImageDestinationAddImage(destination, images[i].CGImage, frameProperties)
+    let destination = CGImageDestinationCreateWithURL(url, kUTTypeGIF, images.count, nil)
+    guard let safeDestination = destination else {
+        assert(false)
+        callback(data: nil, error: createErrorFromString("Couldn't create destination file"))
+        return
+    }
+    CGImageDestinationSetProperties(safeDestination, fileProperties)
+    
+    for i in 0..<images.count {
+        guard let safeCGImage = images[i].CGImage else {
+            assert(false)
+            return
         }
-        
-        if CGImageDestinationFinalize(destination) {
-            callback(data: NSData(contentsOfURL: url), error: nil)
-        } else {
-            callback(data: nil, error: createErrorFromString("Couldn't create the final image"))
-        }
-    } else  {
-        callback(data: nil, error: createErrorFromString("There's something wrong with the document directory", code: 1))
+        CGImageDestinationAddImage(safeDestination, safeCGImage, frameProperties)
+    }
+    
+    if CGImageDestinationFinalize(safeDestination) {
+        callback(data: NSData(contentsOfURL: url), error: nil)
+    } else {
+        callback(data: nil, error: createErrorFromString("Couldn't create the final image"))
     }
 }
